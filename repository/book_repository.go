@@ -5,9 +5,9 @@ import (
 )
 
 type Bookrespository interface {
-	Save(book model.Book)
-	Update(book model.Book)
-	Delete(bookId int)
-	FindbyId(bookId int) (book model.Book, err error)
+	Save(books model.Book)
+	Update(books model.Book)
+	Delete(booksId int)
+	FindbyId(booksId int) (book model.Book, err error)
 	Findall() []model.Book
 }

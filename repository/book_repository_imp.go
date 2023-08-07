@@ -17,10 +17,10 @@ func NewBookrepo(Db *gorm.DB) Bookrespository {
 	return &BookrespositoryImpl{Db: Db}
 }
 
-func (b *BookrespositoryImpl) Delete(bookId int) {
+func (b *BookrespositoryImpl) Delete(booksId int) {
 	var books model.Book
 
-	result := b.Db.Where("id= ?", bookId).Delete(&books)
+	result := b.Db.Where("id= ?", booksId).Delete(&books)
 
 	helper.PanicError(result.Error)
 
@@ -33,15 +33,15 @@ func (b *BookrespositoryImpl) Findall() []model.Book {
 	return books
 }
 
-func (b *BookrespositoryImpl) FindbyId(bookId int) (model.Book, error) {
-	var book model.Book
-	result := b.Db.Find(&book, bookId)
+func (b *BookrespositoryImpl) FindbyId(booksId int) (model.Book, error) {
+	var books model.Book
+	result := b.Db.Find(&books, booksId)
 
-	if result != nil {
-		return book, nil
-	} else {
-		return book,errors.New("Book is not found")
+	if result == nil {
+		return books, errors.New("Book is not found")
 	}
+
+	return books, nil
 
 }
 

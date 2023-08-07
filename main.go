@@ -7,14 +7,16 @@ import (
 	"bookapi/model"
 	"bookapi/repository"
 	"bookapi/routers"
-	
+	"net/http"
+
 	"bookapi/service"
 	"fmt"
-	"net/http"
 
 	"github.com/go-playground/validator/v10"
 	"github.com/rs/zerolog/log"
+	"github.com/rs/cors"
 )
+
 
 func main() {
 	fmt.Println("Go Api")
@@ -36,17 +38,20 @@ func main() {
 	booksService := service.NewBoooksServiceImpl(bookResository, validate)
 
 	// controllers
-// Assuming you have imported the necessary packages correctly.
+	// Assuming you have imported the necessary packages correctly.
 
-// Create a new BooksServiceImpl using booksService.
-booksController := controller.NewBooksController(booksService)
+	// Create a new BooksServiceImpl using booksService.
+	booksController := controller.NewBooksController(booksService)
 
-// Create the router using the booksController as an input.
-router := routers.NewRouter(booksController)
+	// Create the router using the booksController as an input.
+	router := routers.NewRouter(booksController)
+
+	// Enable CORS using the default options. You can customize it further as needed.
+	corsHandler := cors.Default().Handler(router)
 
 	server := &http.Server{
-		Addr:    ":8888",
-		Handler: router,
+		Addr:    ":3000",
+		Handler: corsHandler, // Use the corsHandler as the handler for the server.
 	}
 
 	err := server.ListenAndServe()

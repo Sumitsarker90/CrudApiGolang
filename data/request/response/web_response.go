@@ -1,10 +1,7 @@
 package request
 
-
-type WebResponse struct{
-
-	Code int `json:"code"`
-	Status string `json:"status"`
-	Data interface{}  `json:"data.omitempty"`
-
+type WebResponse struct {
+	Code   int         `json:"code"`
+	Status string      `json:"status"`
+	Data   interface{} `json:"data,omitempty"`
 }

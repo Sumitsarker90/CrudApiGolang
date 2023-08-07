@@ -37,6 +37,7 @@ require (
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
 	github.com/modern-go/reflect2 v1.0.2 // indirect
 	github.com/pelletier/go-toml/v2 v2.0.8 // indirect
+	github.com/rs/cors v1.9.0 // indirect
 	github.com/swaggo/swag v1.8.12 // indirect
 	github.com/twitchyliquid64/golang-asm v0.15.1 // indirect
 	github.com/ugorji/go/codec v1.2.11 // indirect
@@ -53,6 +54,8 @@ require (
 )
 
 require (
+	github.com/DevNiklesh/go-gin-postgresql-api v0.0.0-20220530151138-8f4cad94b60b
+	github.com/gin-contrib/cors v1.4.0
 	github.com/lib/pq v1.10.9
 	github.com/mattn/go-colorable v0.1.12 // indirect
 	github.com/mattn/go-isatty v0.0.19 // indirect
